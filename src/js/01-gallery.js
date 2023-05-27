@@ -1,9 +1,8 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
-import SimpleLightbox from "simpleLightbox";
-import "simpleLightbox/dist/simple-lightbox.min.css";
-
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 console.log(galleryItems);
 
 const galleryMenu = document.querySelector('.gallery');
