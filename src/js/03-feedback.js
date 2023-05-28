@@ -9,11 +9,15 @@ const user = {};
 const fillContactFormFields = () => {
     const userInfoFromLS = localStorageAPI.load('feedback-form-state');
     
-    if (userInfoFromLS){
-        input.value = userInfoFromLS.email || '';
-        textArea.value = userInfoFromLS.message || '';
+    if (userInfoFromLS === undefined) {
+        return
+        // input.value = userInfoFromLS.email || '';
+        // textArea.value = userInfoFromLS.message || '';
     }
-  
+   for (const key in userInfoFromLS) {
+       user[key] = userInfoFromLS[key];
+       formInput.elements[key].value = userInfoFromLS[key];
+  }
 }
 fillContactFormFields()
 
@@ -26,11 +30,13 @@ const onInputFormData = (e) => {
     
     localStorageAPI.save('feedback-form-state', user);
     
+    
 }
 
 const onSubmitFormData = e => {
     e.preventDefault();
-    if (e.target.email.value && e.target.message.value) {
+    const formInput = e.target;
+    if (e.target.elements.email.value && e.target.elements.message.value) {
     console.log(localStorageAPI.load('feedback-form-state'));
     localStorageAPI.remove('feedback-form-state');
     formInput.reset();  
