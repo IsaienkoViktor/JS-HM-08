@@ -39,13 +39,14 @@ const onSubmitFormData = e => {
     if (e.target.elements.email.value && e.target.elements.message.value) {
     console.log(localStorageAPI.load('feedback-form-state'));  
     localStorageAPI.remove('feedback-form-state');  
-    formInput.reset();      
+    formInput.reset(); 
+    user = {};     
        }
     else {
       
         
-    user = {};   
-        alert('Всі поля мають бути заповенні !')
+      
+    alert('Всі поля мають бути заповенні !')
     }          
 }
 
