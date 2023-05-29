@@ -4,7 +4,7 @@ import throttle from 'lodash.throttle';
 const formInput = document.querySelector('.feedback-form');
 const input = document.querySelector('input');
 const textArea = document.querySelector('textarea');
-const user = {};
+let user = {};
 
 const fillContactFormFields = () => {
     const userInfoFromLS = localStorageAPI.load('feedback-form-state');
@@ -35,13 +35,16 @@ const onInputFormData = (e) => {
 
 const onSubmitFormData = e => {
     e.preventDefault();
-    const formInput = e.target;
+    
     if (e.target.elements.email.value && e.target.elements.message.value) {
-    console.log(localStorageAPI.load('feedback-form-state'));
-    localStorageAPI.remove('feedback-form-state');
-    formInput.reset();  
-    }
+    console.log(localStorageAPI.load('feedback-form-state'));  
+    localStorageAPI.remove('feedback-form-state');  
+    formInput.reset();      
+       }
     else {
+      
+        
+    user = {};   
         alert('Всі поля мають бути заповенні !')
     }          
 }
